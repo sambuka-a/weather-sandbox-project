@@ -40,7 +40,7 @@ const suggestionsSlice = createSlice({
             .addCase(getSuggestions.fulfilled, (state, action) => {
                 state.status = 'received';
                 state.error = null;
-                state.list = action.payload;
+                state.list = action.payload.results || [];
             })
     }
 })

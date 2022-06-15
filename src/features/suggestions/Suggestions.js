@@ -4,6 +4,9 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
+import { setSearch } from '../search/search-slice'
+
+import { List } from 'antd';
 
 import { getSuggestions, selectSuggestions } from "./suggestions-slice";
 import { selectSearch } from "../search/search-slice";
@@ -12,32 +15,44 @@ import { selectSearch } from "../search/search-slice";
 const Suggestions = () => {
 
   const dispatch = useDispatch();
-    const town = useSelector(selectSearch);
-    let count = town.length;
-    const {status, error, list} = useSelector(selectSuggestions); 
+  const town = useSelector(selectSearch);
+  const {status, error, list} = useSelector(selectSuggestions); 
+  let checked = false;
 
     useEffect(() => {
-        if(count > 2) {
-          dispatch(getSuggestions(town));
-        }
-      }, [count, town, dispatch]);
+      dispatch(getSuggestions(town));
+
+    }, [town, dispatch]);
     
-      console.log(list);
   //const {status, error, list} = useGetSuggestions();
   //const data = useSelector(selectSearch)
   //console.log(data);
 
+  const handleSuggestion = (suggestion) => {
+    checked = !checked;
+    dispatch(setSearch(suggestion))
+  }
+
+  let locale = {
+    emptyText: true,
+  };
+
   return (
     <>
-      <h2>Status: {status}</h2>
-      <h3>Error: {error}</h3>
-      <p>List: {typeof(list)}</p>
-      <p>Length: {Object.keys(list).length}</p>
-      {Object.keys(list).length > 0 && (
-        list.results.map((i) => (
-          <li>{i.name} - {i.country}</li>
-        ))
-      )} 
+      {error && 'error'}
+      {list.length > 1 && checked === false && 
+        <List
+        size="small"
+        locale={locale}
+        loading={status === 'loading'}
+        bordered
+        dataSource={list}
+        renderItem={(i) => 
+          <List.Item onClick={() => handleSuggestion(i.name)}>
+            {i.name} - {i.country}
+          </List.Item>}
+      />
+      }
     </>
   )
 }
