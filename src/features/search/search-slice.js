@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     search: '',
+    display: true,
 }
 
 const searchSlice = createSlice({
@@ -10,14 +11,17 @@ const searchSlice = createSlice({
     reducers: {
         setSearch: (state, action) => {
             state.search = action.payload;
-            console.log(state.search);
+        },
+        setSuggestionTrigger: (state, action) => {
+            state.display = action.payload;
         },
         resetSearch: () => initialState,
     },
 })
 
-export const { setSearch, resetSearch } = searchSlice.actions;
+export const { setSearch, resetSearch, setSuggestionTrigger } = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;
 
 //selectors
 export const selectSearch = (state) => state.search.search;
+export const selectSuggestionTrigger = (state) => state.search.display;

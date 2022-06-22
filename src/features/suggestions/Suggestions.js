@@ -4,20 +4,21 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { setSearch } from '../search/search-slice'
+import { setSearch, setSuggestionTrigger } from '../search/search-slice'
 
 import { List } from 'antd';
 
 import { getSuggestions, selectSuggestions } from "./suggestions-slice";
-import { selectSearch } from "../search/search-slice";
+import { selectSearch, selectSuggestionTrigger } from "../search/search-slice";
     
 
 const Suggestions = () => {
 
   const dispatch = useDispatch();
   const town = useSelector(selectSearch);
-  const {status, error, list} = useSelector(selectSuggestions); 
-  let checked = false;
+  let display = useSelector(selectSuggestionTrigger)
+  let trigger = false;
+  const {status, error, list} = useSelector(selectSuggestions);  
 
     useEffect(() => {
       dispatch(getSuggestions(town));
@@ -29,7 +30,7 @@ const Suggestions = () => {
   //console.log(data);
 
   const handleSuggestion = (suggestion) => {
-    checked = !checked;
+    dispatch(setSuggestionTrigger(trigger))
     dispatch(setSearch(suggestion))
   }
 
@@ -40,7 +41,7 @@ const Suggestions = () => {
   return (
     <>
       {error && 'error'}
-      {list.length > 1 && checked === false && 
+      {display && list.length > 1 && 
         <List
         size="small"
         locale={locale}
@@ -49,7 +50,7 @@ const Suggestions = () => {
         dataSource={list}
         renderItem={(i) => 
           <List.Item onClick={() => handleSuggestion(i.name)}>
-            {i.name} - {i.country}
+            {i.name} - {i.admin1}
           </List.Item>}
       />
       }

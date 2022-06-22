@@ -24,6 +24,8 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+  margin: 10px 20px;
 }
 
 .logo {
