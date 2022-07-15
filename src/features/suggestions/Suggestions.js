@@ -16,14 +16,16 @@ const Suggestions = () => {
 
   const dispatch = useDispatch();
   const town = useSelector(selectSearch);
+  let townLength = town.length
   let display = useSelector(selectSuggestionTrigger)
   let trigger = false;
   const {status, error, list} = useSelector(selectSuggestions);  
 
     useEffect(() => {
+      (townLength === 0 || townLength > 2) && 
       dispatch(getSuggestions(town));
 
-    }, [town, dispatch]);
+    }, [town, townLength, dispatch]);
     
   //const {status, error, list} = useGetSuggestions();
   //const data = useSelector(selectSearch)
@@ -42,15 +44,15 @@ const Suggestions = () => {
     <>
       {error && 'error'}
       {display && list.length > 1 && 
-        <List
+        <List className="suggestionsList"
         size="small"
         locale={locale}
         loading={status === 'loading'}
         bordered
         dataSource={list}
         renderItem={(i) => 
-          <List.Item onClick={() => handleSuggestion(i.name)}>
-            {i.name} - {i.admin1}
+          <List.Item onClick={() => handleSuggestion({name: i.name, lat: i.latitude, lon: i.longitude})}>
+            {i.name} {<small>{i.admin1}</small>}
           </List.Item>}
       />
       }

@@ -8,7 +8,6 @@ export const getSuggestions = createAsyncThunk(
         try{
             const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${town}`)
             const data = await res.json();
-            console.log(data);
 
             return data;
         } catch(err) {

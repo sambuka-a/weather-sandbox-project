@@ -23,11 +23,28 @@ code {
   height: 100px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
+  padding-top: 20px;
   margin: 10px 20px;
 }
 
 .logo {
   font-size: 32px;
+}
+.formSuggestions {
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+}
+.suggestionsList {
+  cursor: pointer;
+  background-color: white;
+}
+.smile {
+  font-size: 2rem;
+}
+.site-card-wrapper {
+  z-index: 1;
+  position: relative;
 }

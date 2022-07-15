@@ -1,15 +1,22 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectSearch, setSearch, setSuggestionTrigger } from "./search-slice";
+import { selectSearch, selectCoordinates , setSearch, setSuggestionTrigger } from "./search-slice"; 
+import { getCurrentWeather } from '../currentWeather/currentWeather-slice'
 
 export const useSearch = () => {
     const dispatch = useDispatch();
     const search = useSelector(selectSearch);
+    const coordinates = useSelector(selectCoordinates)
     let trigger = true
-    console.log(trigger);
     
-    const handleSearch = (e) => {
+    const handleSearch = (e) => { 
         dispatch(setSuggestionTrigger(trigger));    
-        dispatch(setSearch(e.target.value))};
+        dispatch(setSearch({name: e.target.value}))};
 
-    return [search, handleSearch];
+    const handleGetweather = () => {
+        if (coordinates.length >= 3) {
+            dispatch(getCurrentWeather(coordinates));
+        }
+    }
+
+    return [search, handleSearch, handleGetweather];
 }

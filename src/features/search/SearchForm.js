@@ -7,7 +7,7 @@ import '../../index.css'
 const {Search} = Input;
 
 const SearchForm = () => {
-    const [search, handleSearch] = useSearch()
+    const [search, handleSearch, handleGetWeather] = useSearch()
   return (
     <div>
         <Search className='searchForm'
@@ -15,7 +15,7 @@ const SearchForm = () => {
           size='large'
           value={search}
           onChange={handleSearch}
-          onSearch={() => {}}
+          onSearch={handleGetWeather}
         />
     </div>
   )
