@@ -54,6 +54,8 @@ export const currentWeatherReducer = currentWeatherSlice.reducer;
 export const selectCurrentWeather = (state) => ({
     status: state.currentWeather.status,
     error: state.currentWeather.error,
-    weather: state.currentWeather.weather,
+    //weather: state.currentWeather.weather,
+    current: state.currentWeather.weather.current,
+    location: state.currentWeather.weather.location,
     noLocation: state.currentWeather.noLocation,
 })

@@ -35,7 +35,7 @@ code {
 .formSuggestions {
   display: flex;
   flex-direction: column;
-  z-index: 99;
+  z-index: 1;
 }
 .suggestionsList {
   cursor: pointer;
@@ -45,6 +45,5 @@ code {
   font-size: 2rem;
 }
 .site-card-wrapper {
-  z-index: 1;
-  position: relative;
+  margin: 0 20px;
 }

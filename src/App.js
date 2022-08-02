@@ -1,13 +1,13 @@
 import React from 'react'
 
 import Header from './components/Header'
-import { CurrentWeather } from './features/currentWeather/CurrentWeather'
+import { CurrentWeatherCard } from './features/currentWeather/CurrentWeatherCard'
 
 const App = () => {
   return (
     <div>
       <Header/>
-      <CurrentWeather/>
+      <CurrentWeatherCard/>
     </div>
   )
 }
