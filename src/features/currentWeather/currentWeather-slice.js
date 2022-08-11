@@ -6,7 +6,7 @@ export const getCurrentWeather = createAsyncThunk(
         rejectWithValue
     }) => {
         try{
-            const res = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_GW_KEY}&q=${query}&aqi=yes`)
+            const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_GW_KEY}&q=${query}&aqi=yes`)
             const data = await res.json();
             console.log(data);
 
@@ -54,8 +54,8 @@ export const currentWeatherReducer = currentWeatherSlice.reducer;
 export const selectCurrentWeather = (state) => ({
     status: state.currentWeather.status,
     error: state.currentWeather.error,
-    //weather: state.currentWeather.weather,
     current: state.currentWeather.weather.current,
+    forecast: state.currentWeather.weather.forecast,
     location: state.currentWeather.weather.location,
     noLocation: state.currentWeather.noLocation,
 })

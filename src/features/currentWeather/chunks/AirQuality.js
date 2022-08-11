@@ -34,8 +34,8 @@ const AirQuality = () => {
       {(status === 'received' && !error) && (
         <div>
           <div>
-            <Text type='secondary'>{`PM 2.5 ${dustPolutantData.pm2_5.toFixed(2)} mg/\xB3`}</Text>
-            <Text type='secondary'>{`PM 10 ${dustPolutantData.pm10.toFixed(2)} mg/\xB3`}</Text>
+            <Text type='secondary'>{`PM 2.5 ${dustPolutantData.pm2_5.toFixed(2)} mg/m\xB3`}</Text>
+            <Text type='secondary'>{`PM 10 ${dustPolutantData.pm10.toFixed(2)} mg/m\xB3`}</Text>
           </div>
           <Popover placement={'bottom'} title="In Details" content={content}>
             {daqiIndex <= 3 && <SmileTwoTone className='smile' twoToneColor="#52c41a"/>}

@@ -4,6 +4,7 @@ import React from 'react';
 import AirQuality from './chunks/AirQuality';
 import CurrentWeather from './chunks/CurrentWeather';
 import CurrentLocation from './chunks/LocationInfo';
+import TemperatureGraph from './chunks/TemperatureGraph';
 
 export const CurrentWeatherCard = () => (
   <div className='wrapper'>
@@ -25,6 +26,7 @@ export const CurrentWeatherCard = () => (
           </Card>
         </Col>
       </Row>
+      <TemperatureGraph/>
     </div>
   </div>
 );
