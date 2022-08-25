@@ -16,7 +16,7 @@ code {
 
 .wrapper {
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 1024px;
 }
 
 .header {
@@ -46,4 +46,9 @@ code {
 }
 .site-card-wrapper {
   margin: 0 20px;
+}
+.custom-tooltip {
+  background-color: #fff;
+  padding: 20px;
+  filter: drop-shadow(0 0 0.75rem rgb(196, 196, 196));
 }
