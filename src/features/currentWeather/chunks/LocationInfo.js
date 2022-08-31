@@ -7,19 +7,20 @@ import { Typography } from 'antd'
 import { selectCurrentWeather } from '../currentWeather-slice';
     
 const CurrentLocation = () => {
-    const { Title, Text } = Typography
+    const { Title } = Typography
     const {status, error, location} = useSelector(selectCurrentWeather)
-    console.log(location);
 
   return (
     <>
       {status === 'loading' && <h2>Loading...</h2>}
       {(status === 'received' && !error) && (
-        <div>
-            <Text type="secondary">{location.localtime}</Text>
-            <Title level={5}>{location.country}</Title>
-            <p>{location.region}</p>
-        
+        <div className='locationInfo'>
+          <div>
+            <Title className='country' level={4}>{location.country}</Title>
+          </div>
+          <div className='localTime'>
+            <small>{`Local time-${location.localtime}`}</small>
+          </div>
       </div>
     )}
     </>

@@ -8,13 +8,11 @@ export const getCurrentWeather = createAsyncThunk(
         try{
             const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_GW_KEY}&q=${query}&aqi=yes`)
             const data = await res.json();
-            console.log(data);
 
             return data;
         } catch(err) {
             return rejectWithValue('Failed loading data...')
-        }
-        
+        }       
     }
 );
 

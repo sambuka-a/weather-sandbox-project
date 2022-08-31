@@ -49,6 +49,25 @@ code {
 }
 .custom-tooltip {
   background-color: #fff;
-  padding: 20px;
+  padding: 5px 10px;
   filter: drop-shadow(0 0 0.75rem rgb(196, 196, 196));
+}
+
+.custom-tooltip img {
+  display: block;
+  margin: auto;
+}
+.pmData,
+.currentWeather {
+  display: flex;
+}
+.pmDetails {
+  display: flex;
+  flex-direction: column;
+}
+.pmDetailsIcon {
+  margin-right: 10px;
+}
+.country {
+  margin-bottom: 0px !important;
 }

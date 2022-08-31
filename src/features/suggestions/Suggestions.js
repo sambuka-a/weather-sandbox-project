@@ -19,8 +19,7 @@ const Suggestions = () => {
   let townLength = town.length
   let display = useSelector(selectSuggestionTrigger)
   let trigger = false;
-  const {status, error, list} = useSelector(selectSuggestions);  
-  console.log(list);
+  const {status, error, list} = useSelector(selectSuggestions);
 
     useEffect(() => {
       (townLength === 0 || townLength > 2) && 
