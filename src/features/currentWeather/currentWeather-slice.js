@@ -26,7 +26,9 @@ const initialState = {
 const currentWeatherSlice = createSlice({
     name: "@@currentWeather",
     initialState,
-    reducers: {},
+    reducers: {
+        resetWeather: () => initialState,
+    },
     extraReducers: (builder) => {
         builder
         .addCase(getCurrentWeather.pending, (state) => {
@@ -46,6 +48,7 @@ const currentWeatherSlice = createSlice({
     }
 })
 
+export const { resetWeather } = currentWeatherSlice.actions;
 export const currentWeatherReducer = currentWeatherSlice.reducer;
 
 //selectors

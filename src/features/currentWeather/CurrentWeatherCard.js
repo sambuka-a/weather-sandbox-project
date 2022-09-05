@@ -13,11 +13,12 @@ import TemperatureGraph from './chunks/TemperatureGraph';
 import { selectCurrentWeather } from '../currentWeather/currentWeather-slice';
 
 export const CurrentWeatherCard = () => {
-  const { status } = useSelector(selectCurrentWeather)
+  const { status, error } = useSelector(selectCurrentWeather)
   let loading = ((status === 'loading') && true)
 
   return (
     <>
+      {error && 'Error'}
       {status === 'idle' && <Skeleton/>}
       {status !== 'idle' && (
         <div className='wrapper'>
